@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider } from "@chakra-ui/react"
 
-function App() {
+import "@fontsource/poppins/700.css";
+import "@fontsource/montserrat/900.css";
+
+import Home from "./containers/Home/Home";
+
+import { extendTheme } from "@chakra-ui/react"
+
+import defaultTheme from './styles/themes/default/index'
+
+const theme = extendTheme(defaultTheme)
+
+function App({ Component, pageProps }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Home {...pageProps}/>
+    </ChakraProvider>
   );
 }
 
